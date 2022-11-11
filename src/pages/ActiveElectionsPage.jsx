@@ -5,17 +5,19 @@ import ElectionsContainer from "../components/ElectionsContainer";
 
 const ActiveElectionsPage = () => {
     return (
-        <section className="relative">
+        <section className="pb-[30px]">
             <div className="w-full">
                 <Header />
             </div>
 
             <div className="w-full flex justify-between px-[30px] items-center mb-[120px]">
-                <h2 className="text-white text-4xl">
+                <h2 className="text-white text-4xl animate-slideright">
                     Активные голосования
                 </h2>
 
-                <SearchBar />
+                <div className="animate-slideleft">
+                    <SearchBar />
+                </div>
             </div>
 
             <ElectionsContainer />

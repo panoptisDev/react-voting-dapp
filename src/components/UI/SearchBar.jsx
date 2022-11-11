@@ -3,7 +3,7 @@ import ZoomImage from "../../assets/images/zoom-image.svg";
 
 const SearchBar = () => {
     return (
-        <div className="bg-white border-[4px] border-black flex gap-2 w-full max-w-[450px] shadow-[10px_9px_0px_#000000]">
+        <div className="bg-white border-[4px] border-black flex gap-2 w-full max-w-[450px]">
             <img 
                 src={ZoomImage} 
                 alt="zoom" 

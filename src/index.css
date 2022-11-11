@@ -5,6 +5,7 @@
 * {
     box-sizing: border-box;
     font-family: 'Press Start 2P', cursive;
+    /* cursor: url("./assets/images/cursos-image.svg"), auto; */
 }
 
 body {
