@@ -3,7 +3,7 @@ import ActiveElectionsPage from "./pages/ActiveElectionsPage";
 
 function App() {
   return (
-    <div className="w-full max-w-[1440px] min-h-full my-0 mx-auto">
+    <div className="w-full min-h-full my-0 mx-auto">
       <ActiveElectionsPage />
     </div>
   );
