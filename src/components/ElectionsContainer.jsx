@@ -1,17 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../context";
 import ElectionCard from "./ElectionCard";
 
 const ElectionsContainer = () => {
+
+    const {state} = useContext(Context);
+
     return (
         <div className="w-full px-[10px] flex flex-wrap justify-center gap-[60px] animate-slideup">
-            <ElectionCard />
-            <ElectionCard />
-            <ElectionCard />
-            <ElectionCard />
-            <ElectionCard />
-            <ElectionCard />
-            <ElectionCard />
-            <ElectionCard />
+            {
+                state.elections.map(election => <ElectionCard election={election} key={election.id}/>)
+            }
         </div>
     );
 };

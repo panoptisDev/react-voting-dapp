@@ -5,7 +5,7 @@ module.exports = {
   ],
   theme: {
     "screens": {
-      "max-md-screen": {"max": "890px"},
+      "max-md-screen": {"max": "941px"},
       "max-sm-screen": {"max": "653px"},
       "max-2sm-screen": {"max": "548px"},
       "max-3sm-screen": {"max": "367px"}

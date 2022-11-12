@@ -5,7 +5,9 @@ import Header from "../components/Header";
 const AboutUsPage = () => {
     return (
         <section className="w-full min-h-screen bg-[#7FFF5B]">
-            <Header />
+            <div className="w-full top-0 sticky z-10">
+                <Header />
+            </div>
 
             <div className="w-full flex justify-center mb-[30px]">
                 <h2 className="text-4xl animate-slideright text-center max-3sm-screen:text-2xl">

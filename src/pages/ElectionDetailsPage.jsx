@@ -1,8 +1,13 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import { getTruncatedAddress } from "../utils/funcs";
 import CandidatesContainer from "../components/CandidatesContainer";
 import Header from "../components/Header";
 
 const ElectionDetailsPage = () => {
+
+    const {address} = useParams();
+
     return (
         <section className="w-full min-h-screen bg-[#FF9798]">
             <div className="w-full min-h-screen election-bg-image">
@@ -13,8 +18,8 @@ const ElectionDetailsPage = () => {
                         Кто съел деда?
                     </h2>
                     
-                    <a href="https://goerli.etherscan.io/" target="_blank" rel="noreferrer" className="text-black text-2xl transition-all duration-300 animate-slideleft hover:text-black max-3sm-screen:text-xl">
-                        0x2A1...81a
+                    <a href={"https://goerli.etherscan.io/address/" + address} target="_blank" rel="noreferrer" className="text-black text-2xl transition-all duration-300 animate-slideleft hover:text-black max-3sm-screen:text-xl">
+                        {getTruncatedAddress(address)}
                     </a>
                 </div>
                 
