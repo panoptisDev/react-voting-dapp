@@ -13,7 +13,7 @@ const ElectionDetailsPage = () => {
                         Кто съел деда?
                     </h2>
                     
-                    <a href="https://goerli.etherscan.io/" target="_blank" className="text-black text-2xl transition-all duration-300 animate-slideleft hover:text-black max-3sm-screen:text-xl">
+                    <a href="https://goerli.etherscan.io/" target="_blank" rel="noreferrer" className="text-black text-2xl transition-all duration-300 animate-slideleft hover:text-black max-3sm-screen:text-xl">
                         0x2A1...81a
                     </a>
                 </div>
