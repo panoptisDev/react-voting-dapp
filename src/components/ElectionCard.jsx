@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ElectionCard = () => {
     return (
-        <div className="bg-black border-8 border-black w-full max-w-[250px] cursor-pointer transition-all duration-300 hover:translate-y-[-3px] hover:shadow-[10px_9px_0px_#000] max-sm-screen:pointer-events-none">
+        <Link to={"/election-details"} className="bg-black border-8 border-black w-full max-w-[250px] cursor-pointer transition-all duration-300 hover:translate-y-[-3px] hover:shadow-[10px_9px_0px_#000] hover:no-underline max-sm-screen:pointer-events-none">
             <div className="w-full bg-black mb-1 flex justify-between">
                 <div className="w-fit flex gap-2 items-center">
                     <div className="w-1 h-1 p-1 rounded-full border-[1px] border-white bg-transparent"></div>
@@ -25,7 +26,7 @@ const ElectionCard = () => {
                 <p className="text-white text-[13px] mb-3">Кто съел деда?</p>
                 <p className="text-white text-[9px]">10.11.2022</p>
             </div>
-        </div>
+        </Link>
     );
 };
 
