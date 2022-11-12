@@ -9,5 +9,11 @@
 }
 
 body {
-    background: #bb6bd9;
+    /* background: #bb6bd9; */
+}
+
+.election-bg-image {
+    background-image: url("/src/assets/images/sphere-grid.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
