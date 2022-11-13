@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../context";
+import { getTruncatedAddress } from "../utils/funcs";
 import BurgerMenu from "./UI/BurgerMenu";
 import CloseIcon from "./UI/CloseIcon";
 
 const Header = () => {
 
     const [isMenuVisible, setIsMenuVisible] = useState(false);
+    const {state, connectWallet} = useContext(Context);
 
     return (
         <header className="w-full bg-black mb-[100px]">
@@ -32,8 +35,11 @@ const Header = () => {
                     </div>
                 </nav>
 
-                <button className="nes-btn is-primary text-[12px] py-1 px-2">
-                    Войти
+                <button 
+                    className="w-full max-w-[144px] nes-btn is-primary text-[12px] py-1 px-2" 
+                    onClick={connectWallet}
+                >
+                    {state.userAddress.length ? getTruncatedAddress(state.userAddress) : "Войти"}
                 </button>
 
                 <BurgerMenu onClick={() => setIsMenuVisible(true)}/>
