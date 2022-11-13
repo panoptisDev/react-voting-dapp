@@ -4,7 +4,7 @@ import { getTruncatedAddress } from "../utils/funcs";
 
 const ElectionCard = ({election}) => {
     return (
-        <Link to={"/" + election.address} className="bg-black border-8 border-black w-full max-w-[250px] cursor-pointer transition-all duration-300 hover:translate-y-[-3px] hover:shadow-[10px_9px_0px_#000] hover:no-underline max-sm-screen:pointer-events-none">
+        <Link to={"/" + election.address} className="bg-black border-8 border-black w-full max-w-[250px] cursor-pointer transition-all duration-300 hover:translate-y-[-3px] hover:shadow-[10px_9px_0px_#000] hover:no-underline max-sm-screen:hover:shadow-[0px_0px_0px_#000] max-sm-screen:hover:translate-y-0">
             <div className="w-full bg-black mb-1 flex justify-between">
                 <div className="w-fit flex gap-2 items-center">
                     <div className="w-1 h-1 p-1 rounded-full border-[1px] border-white bg-transparent"></div>

@@ -16,4 +16,5 @@ body {
     background-image: url("/src/assets/images/sphere-grid.svg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }

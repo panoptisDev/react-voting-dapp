@@ -11,7 +11,9 @@ const ElectionDetailsPage = () => {
     return (
         <section className="w-full min-h-screen bg-[#FF9798]">
             <div className="w-full min-h-screen election-bg-image">
-                <Header />
+                <div className="w-full top-0 sticky z-10">
+                    <Header />
+                </div>
 
                 <div className="w-full flex flex-col items-center mb-[40px]">
                     <h2 className="text-white text-4xl mb-[20px] animate-slideright text-center max-sm-screen:text-3xl max-3sm-screen:text-xl">
