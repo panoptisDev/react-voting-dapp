@@ -4,8 +4,10 @@ import { ethers } from "ethers";
 import { getTruncatedAddress } from "../utils/funcs";
 import { ELECTION_CONTRACT_ABI } from "../utils/constants"
 import SettingsIcon from "../assets/images/settings-icon.svg";
+import CloseIcon from "../components/UI/CloseIcon";
 import CandidatesContainer from "../components/CandidatesContainer";
 import Header from "../components/Header";
+import Modal from "../components/UI/Modal";
 
 const ElectionDetailsPage = () => {
 
@@ -17,6 +19,8 @@ const ElectionDetailsPage = () => {
         voters: [],
         owner: ""
     });
+
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
     useEffect(() => {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -58,13 +62,54 @@ const ElectionDetailsPage = () => {
                 <CandidatesContainer candidates={election.candidates} />
             </div>
 
-            <button className="nes-btn absolute top-[60px] right-3 cursor-pointer p-0">
+            <button className="nes-btn absolute top-[60px] right-3 cursor-pointer p-0" onClick={() => setIsModalVisible(true)}>
                 <img 
                     src={SettingsIcon} 
                     alt="settings" 
                     className="w-[30px] h-[30px]"
-                    />
-                </button>
+                />
+            </button>
+
+            <Modal isVisible={isModalVisible}>
+                <header className="w-full flex justify-between mb-[40px]">
+                    <p>
+                        Настройки голосования
+                    </p>
+
+                    <button onClick={() => setIsModalVisible(false)}>
+                        <CloseIcon />
+                    </button>
+                </header>
+
+                <main className="w-full">
+                    <div className="w-[50%] flex flex-col items-center">
+                        <p className="mb-[30px]">
+                            Голосующие
+                        </p>
+
+                        <form action="#" className="flex gap-2 w-full mb-[40px] max-md-screen:flex-col">
+                            <input 
+                                type="text"
+                                placeholder="Добавить голосующего"
+                                className="w-full p-1 border-4 border-black outline-none"
+                            />
+
+                            <button className="nes-btn p-0">
+                                Добавить
+                            </button>
+                        </form>
+
+                        <div className="flex flex-col w-full items-center h-full max-h-[300px] min-h-[300px] overflow-y-auto">
+                            {/* // election.voters.map(voter => <VoterCard />) */}
+                            <p className="opacity-60 text-center">Голосующих нет</p>
+                        </div>
+                    </div>
+
+                    <div>
+
+                    </div>
+                </main>
+            </Modal>
         </section>
     );
 };
