@@ -58,7 +58,7 @@ const ElectionDetailsPage = () => {
                 <CandidatesContainer candidates={election.candidates} />
             </div>
 
-            <button className="nes-btn absolute top-[60px] right-5 cursor-pointer p-0">
+            <button className="nes-btn absolute top-[60px] right-3 cursor-pointer p-0">
                 <img 
                     src={SettingsIcon} 
                     alt="settings" 

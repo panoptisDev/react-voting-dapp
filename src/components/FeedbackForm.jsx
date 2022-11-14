@@ -2,7 +2,7 @@ import React from "react";
 
 const FeedbackForm = () => {
     return (
-        <form className="nes-container is-rounded w-full max-w-[600px] bg-white">
+        <form className="nes-container is-rounded w-full max-w-[600px] bg-[#fefefe]">
             <textarea 
                 name="feedback"  
                 cols="20" 
