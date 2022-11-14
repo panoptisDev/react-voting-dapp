@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { Routes, Route } from "react-router-dom";
 import { Context } from "./context";
+import FirestoreService from "./Services/FirestoreService";
 import ActiveElectionsPage from "./pages/ActiveElectionsPage";
 import CreateElectionPage from "./pages/CreateElectionPage";
 import MyElectionsPage from "./pages/MyElectionsPage";
@@ -12,15 +13,8 @@ function App() {
 
   const [state, setState] = useState({
     userAddress: "",
-    elections: [
-      {id: 1, title: "Кто съел деда?", address: "0x2A1135e669A5f16b46daAfB718F6aA4F3818b81a", date: "10.12.2021"},
-      {id: 2, title: "Кто съел бабку?", address: "0x178ddC5bFb15c6257EAb1F3a6a680bEBa7538D8D", date: "09.11.2022"},
-      {id: 3, title: "Кто съел деда?", address: "0x2A1135e669A5f16b46daAfB718F6aA4F3818b81a", date: "10.12.2021"},
-      {id: 4, title: "Кто съел бабку?", address: "0x178ddC5bFb15c6257EAb1F3a6a680bEBa7538D8D", date: "09.11.2022"},
-    ],
+    elections: [],
   });
-
-
 
   const connectWallet = async (e) => {
     e.preventDefault();
@@ -39,29 +33,30 @@ function App() {
     }
   };
 
-
-
   useEffect(() => {
     (async () => {
       try {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const accounts = await provider.listAccounts();
 
-        return accounts[0];
+        const accounts = await provider.listAccounts();
+        const elections = await FirestoreService.getElections();
+
+        return {
+          addr: accounts[0], 
+          elections: elections
+        };
 
       } catch(err) {
         console.log(err.name);
 
       }
-    })().then(addr => setState({
+    })().then(value => setState({
       ...state,
-      userAddress: addr
+      userAddress: value.addr ?? "",
+      elections: value.elections ?? []
     }));
     
   }, []);
-
-
-
 
   return (
     <div className="w-full min-h-full my-0 mx-auto">

@@ -2,6 +2,10 @@ export const getTruncatedAddress = (address) => {
     return `${address.slice(0, 4)}...${address.slice(address.length - 3)}`;
 };
 
+export const getTruncatedTitle = (title) => {
+    return title.length > 15 ? `${title.slice(0, 20)}...` : title;
+};
+
 export const getCurrentDate = () => {
     const today = new Date();
 

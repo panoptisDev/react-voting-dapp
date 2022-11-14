@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getTruncatedAddress } from "../utils/funcs";
+import { getTruncatedAddress, getTruncatedTitle } from "../utils/funcs";
 
 const ElectionCard = ({election}) => {
     return (
@@ -18,14 +18,14 @@ const ElectionCard = ({election}) => {
             </div>
 
             <img 
-                src="https://media.giphy.com/media/3ohs7HdhQA4ffttvrO/giphy.gif" 
+                src={election.gif} 
                 alt="vote" 
                 className="w-full h-[220px] mb-2"
             />
 
             <div className="p-1">
                 <p className="text-white text-[13px] mb-3">
-                    {election.title}
+                    {getTruncatedTitle(election.title)}
                 </p>
 
                 <p className="text-white text-[9px]">
