@@ -5,7 +5,7 @@ import ElectionsContainer from "../components/ElectionsContainer";
 
 const MyElectionsPage = () => {
     return (
-        <section className="w-full min-h-screen bg-[#76ee55] pb-[30px]">
+        <section className="w-full min-h-screen bg-[#77DD77] pb-[30px]">
             <div className="w-full top-0 sticky z-10">
                 <Header />
             </div>

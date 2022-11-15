@@ -43,7 +43,7 @@ const CreateElectionPage = () => {
     };
 
     return (
-        <section className="w-full min-h-screen bg-[#F2C94C]">
+        <section className="w-full min-h-screen bg-orange-300">
             <div className="w-full top-0 sticky z-10">
                 <Header />
             </div>

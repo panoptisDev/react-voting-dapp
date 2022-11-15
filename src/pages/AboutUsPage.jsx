@@ -4,7 +4,7 @@ import Header from "../components/Header";
 
 const AboutUsPage = () => {
     return (
-        <section className="w-full min-h-screen bg-[#1e9fe9]">
+        <section className="w-full min-h-screen bg-blue-300">
             <div className="w-full top-0 sticky z-10">
                 <Header />
             </div>

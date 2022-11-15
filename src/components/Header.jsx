@@ -26,9 +26,9 @@ const Header = () => {
                         Создать голосование
                     </Link>
 
-                    <Link to="/about-us" className="text-xs text-white hover:text-[#fff] transition-all duration-200">
+                    {/* <Link to="/about-us" className="text-xs text-white hover:text-[#fff] transition-all duration-200">
                         О нас
-                    </Link>
+                    </Link> */}
 
                     <div className="hidden max-md-screen:block absolute top-5 right-3" onClick={() => setIsMenuVisible(false)}>
                         <CloseIcon />
