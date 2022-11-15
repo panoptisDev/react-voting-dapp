@@ -36,8 +36,9 @@ const Header = () => {
                 </nav>
 
                 <button 
-                    className="w-full max-w-[144px] nes-btn is-primary text-[12px] py-1 px-2" 
+                    className={"w-full max-w-[144px] nes-btn is-primary text-[12px] py-1 px-2"} 
                     onClick={connectWallet}
+                    disabled={state.userAddress ? true : false}
                 >
                     {state.userAddress.length ? getTruncatedAddress(state.userAddress) : "Войти"}
                 </button>

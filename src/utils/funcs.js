@@ -15,3 +15,17 @@ export const getCurrentDate = () => {
 
     return `${day}.${month}.${year}`;
 };
+
+export const parseCandidates = (candidates) => {
+    const parsedCandidates = [];
+
+    candidates.forEach(item => {
+        parsedCandidates.push({
+            id: Date.now() + Math.random(),
+            name: item[0],
+            votes: parseInt(item[1]._hex)
+        });
+    });
+
+    return parsedCandidates;
+};

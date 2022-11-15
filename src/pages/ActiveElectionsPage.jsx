@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../context";
 import Header from "../components/Header";
 import SearchBar from "../components/UI/SearchBar";
 import ElectionsContainer from "../components/ElectionsContainer";
 
 const ActiveElectionsPage = () => {
+
+    const {state} = useContext(Context);
+
     return (
         <section className="w-full min-h-screen bg-[#bb6bd9] pb-[30px]">
             <div className="w-full top-0 sticky z-10">
@@ -20,7 +24,7 @@ const ActiveElectionsPage = () => {
                 </div>
             </div>
 
-            <ElectionsContainer />
+            <ElectionsContainer elections={state.elections}/>
         </section>
     );
 };
