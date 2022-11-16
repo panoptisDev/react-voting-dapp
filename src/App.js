@@ -14,6 +14,7 @@ function App() {
   const [state, setState] = useState({
     userAddress: "",
     elections: [],
+    isElectionsFetching: false
   });
 
   const connectWallet = async (e) => {
@@ -35,25 +36,35 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      try {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        setState({
+          ...state,
+          isElectionsFetching: true
+        });
 
-        const accounts = await provider.listAccounts();
         const elections = await FirestoreService.getElections();
+        let userAddress = "";
+
+        if (window.ethereum) {
+          const provider = new ethers.providers.Web3Provider(window.ethereum);
+          const accounts = await provider.listAccounts();
+
+          userAddress = accounts[0];
+        }
+
+        setState({
+          ...state,
+          isElectionsFetching: false
+        });
 
         return {
-          addr: accounts[0], 
-          elections: elections
+          userAddress: userAddress ?? "", 
+          elections: elections ?? []
         };
 
-      } catch(err) {
-        console.log(err.name);
-
-      }
-    })().then(value => setState({
+    })().then(({userAddress, elections}) => setState({
       ...state,
-      userAddress: value.addr ?? "",
-      elections: value.elections ?? []
+      userAddress,
+      elections
     }));
     
   }, []);

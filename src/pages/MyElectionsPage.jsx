@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { Context } from "../context";
 import Header from "../components/Header";
 import SearchBar from "../components/UI/SearchBar";
@@ -8,9 +8,15 @@ const MyElectionsPage = () => {
 
     const {state} = useContext(Context);
 
+    const [searchQuery, setSearchQuery] = useState("");
+
     const userElections = useMemo(() => {
-        return state.elections.filter(election => election.owner === state.userAddress);
-    }, [state.elections]);
+        return state.elections.filter(election => {
+            if (election.owner === state.userAddress && election.title.toLowerCase().includes(searchQuery.toLowerCase().trim())) {
+                return election;
+            }
+        });
+    }, [state.elections, searchQuery]);
 
     return (
         <section className="w-full min-h-screen bg-[#77DD77] pb-[30px]">
@@ -24,7 +30,10 @@ const MyElectionsPage = () => {
                 </h2>
 
                 <div className="w-fit animate-slideleft flex justify-end max-md-screen:justify-center">
-                    <SearchBar />
+                    <SearchBar 
+                        searchQuery={searchQuery} 
+                        setSearchQuery={setSearchQuery} 
+                    />
                 </div>
             </div>
 

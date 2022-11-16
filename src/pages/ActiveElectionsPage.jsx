@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useMemo } from "react";
 import { Context } from "../context";
 import Header from "../components/Header";
 import SearchBar from "../components/UI/SearchBar";
@@ -7,6 +7,16 @@ import ElectionsContainer from "../components/ElectionsContainer";
 const ActiveElectionsPage = () => {
 
     const {state} = useContext(Context);
+
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const activeElections = useMemo(() => {
+        return state.elections.filter(election => {
+            if (election.title.toLowerCase().includes(searchQuery.toLowerCase().trim())) {
+                return election;
+            }
+        });
+    }, [state.elections, searchQuery]);
 
     return (
         <section className="w-full min-h-screen bg-[#bb6bd9] pb-[30px]">
@@ -20,11 +30,11 @@ const ActiveElectionsPage = () => {
                 </h2>
 
                 <div className="w-fit animate-slideleft flex justify-end max-md-screen:justify-center">
-                    <SearchBar />
+                    <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
                 </div>
             </div>
 
-            <ElectionsContainer elections={state.elections}/>
+            <ElectionsContainer elections={activeElections} />
         </section>
     );
 };
