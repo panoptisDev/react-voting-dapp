@@ -10,7 +10,31 @@ import LettersCounter from "../components/LettersCounter";
 const CreateElectionPage = () => {
 
     const {state} = useContext(Context);
+
     const [electionTitle, setElectionTitle] = useState("");
+    const [candidateName, setCandidateName] = useState("");
+    const [candidates, setCandidates] = useState([]);
+
+    const addCandidate = (e) => {
+        e.preventDefault();
+
+        const newCandidate = {
+            id: Date.now(),
+            name: candidateName,
+        };
+
+        setCandidates([
+            ...candidates,
+            newCandidate
+        ]);
+
+        setCandidateName("");
+    };
+
+    const removeCandidatre = (e, id) => {
+        e.preventDefault();
+        setCandidates(state => state.filter((candidate) => candidate.id !== id));
+    };
 
     const deployElectionSmartContract = async (e, title) => {
         e.preventDefault();
@@ -55,7 +79,7 @@ const CreateElectionPage = () => {
             </div>
 
             <div className="w-full flex justify-center px-[10px]">
-                <form className="w-full max-w-[1000px] flex flex-col items-center gap-[30px] animate-slideup">
+                <form className="w-full max-w-[1000px] flex flex-col items-center gap-[60px] animate-slideup">
                     <div className="flex gap-6">
                         <input 
                             value={electionTitle}
@@ -70,6 +94,33 @@ const CreateElectionPage = () => {
                             max={MAX_ELECTION_TITLE_LENGTH}
                         />
                     </div>
+
+                    <div className="flex gap-6 items-center">
+                        <input 
+                            value={candidateName}
+                            onChange={(e) => setCandidateName(e.target.value)}
+                            type="text" 
+                            placeholder="Имя кандидата..."
+                            className="w-full text-2xl max-2sm-screen:text-xl bg-transparent outline-none border-b-2 border-b-white placeholder:text-white placeholder:text-opacity-50"
+                        />
+
+                        {/* <LettersCounter 
+                            curr={candidateName.length} 
+                            max={16}
+                        /> */}
+
+                        <button className="nes-btn is-success py-1 px-2 text-xl max-3sm-screen:text-xs" onClick={addCandidate}>
+                            +
+                        </button>
+                    </div>
+
+                    <div className="flex flex-col items-center max-h-[200px] overflow-y-auto gap-6 w-[50%]">
+                        {
+                            !candidates.length ? <p>Пока нет кандидатов</p> :
+                            candidates.map((candidate) => <div className="text-xl border-4 p-2 border-white w-full flex justify-between items-center">{candidate.name} <button onClick={(e) => removeCandidatre(e, candidate.id)} className="nes-btn is-error p-0 text-xl max-3sm-screen:text-xs">x</button></div>)
+                        }
+                    </div>
+                    
 
                     <button 
                         className="nes-btn p-1 max-3sm-screen:text-xs"

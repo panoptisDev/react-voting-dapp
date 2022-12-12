@@ -9,6 +9,7 @@ import CloseIcon from "../components/UI/CloseIcon";
 import CandidatesContainer from "../components/CandidatesContainer";
 import Header from "../components/Header";
 import Modal from "../components/UI/Modal";
+import Loader from "../components/UI/Loader";
 
 const ElectionDetailsPage = () => {
 
@@ -29,11 +30,17 @@ const ElectionDetailsPage = () => {
         voter: ""
     });
 
+    const [isLoading, setIsLoading] = useState(false);
+
     useEffect(() => {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const numberContract = new ethers.Contract(address, ELECTION_CONTRACT_ABI, provider);
 
+        setIsLoading(true);
+
         (async () => {
+            setIsLoading(true);
+
             const title = await numberContract.electionTitle();
             const candidates = await numberContract.getAllCandidates();
             const voters = await numberContract.getAllVoters();
@@ -46,6 +53,8 @@ const ElectionDetailsPage = () => {
                 voters,
                 owner
             });
+
+            setIsLoading(false);
 
         })();
 
@@ -93,7 +102,7 @@ const ElectionDetailsPage = () => {
         await numberContract.vote(candidateID).then(val => alert("voted"));
     };
 
-    return (
+    return isLoading ? <Loader /> : (
         <section className="w-full min-h-screen bg-[#FF9798]">
             <div className="w-full min-h-screen election-bg-image">
                 <div className="w-full top-0 sticky z-10">
