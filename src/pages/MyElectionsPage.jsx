@@ -19,17 +19,17 @@ const MyElectionsPage = () => {
     }, [state.elections, searchQuery]);
 
     return (
-        <section className="w-full min-h-screen bg-[#77DD77] pb-[30px]">
-            <div className="w-full top-0 sticky z-10">
+        <section className="w-full min-h-screen bg-[#0b9dc1] pb-[30px]">
+            <div className="sticky top-0 z-10 w-full">
                 <Header />
             </div>
 
             <div className="w-full max-w-[1440px] mx-auto my-0 flex justify-between px-[30px] items-center mb-[120px] max-md-screen:flex-col max-md-screen:items-center">
                 <h2 className="text-white text-4xl animate-slideright max-md-screen:mb-[40px] max-md-screen:text-center max-sm-screen:text-2xl">
-                    Мои голосования
+                    My votes
                 </h2>
 
-                <div className="w-fit animate-slideleft flex justify-end max-md-screen:justify-center">
+                <div className="flex justify-end w-fit animate-slideleft max-md-screen:justify-center">
                     <SearchBar 
                         searchQuery={searchQuery} 
                         setSearchQuery={setSearchQuery} 

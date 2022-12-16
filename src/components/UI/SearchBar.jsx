@@ -14,8 +14,8 @@ const SearchBar = ({searchQuery, setSearchQuery}) => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 type="text" 
                 name="search" 
-                className="bg-transparent outline-none w-full"
-                placeholder="Поиск..."
+                className="w-full bg-transparent outline-none"
+                placeholder="Search..."
             />
         </div>
     );

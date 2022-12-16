@@ -105,7 +105,7 @@ const ElectionDetailsPage = () => {
     return isLoading ? <Loader /> : (
         <section className="w-full min-h-screen bg-[#FF9798]">
             <div className="w-full min-h-screen election-bg-image">
-                <div className="w-full top-0 sticky z-10">
+                <div className="sticky top-0 z-10 w-full">
                     <Header />
                 </div>
 
@@ -114,7 +114,7 @@ const ElectionDetailsPage = () => {
                         {election.title}
                     </h2>
                     
-                    <a href={"https://goerli.etherscan.io/address/" + address} target="_blank" rel="noreferrer" className="text-black text-2xl transition-all duration-300 animate-slideleft hover:text-black max-3sm-screen:text-xl">
+                    <a href={"https://goerli.etherscan.io/address/" + address} target="_blank" rel="noreferrer" className="text-2xl text-black transition-all duration-300 animate-slideleft hover:text-black max-3sm-screen:text-xl">
                         {getTruncatedAddress(address)}
                     </a>
                 </div>
@@ -133,7 +133,7 @@ const ElectionDetailsPage = () => {
             <Modal isVisible={isModalVisible}>
                 <header className="w-full flex justify-between mb-[40px]">
                     <p>
-                        Настройки голосования
+                        Voting settings
                     </p>
 
                     <button onClick={() => setIsModalVisible(false)}>
@@ -141,10 +141,10 @@ const ElectionDetailsPage = () => {
                     </button>
                 </header>
 
-                <main className="w-full flex gap-5">
+                <main className="flex w-full gap-5">
                     <div className="w-[50%] flex flex-col items-center">
                         <p className="mb-[30px]">
-                            Голосующие
+                            Voters
                         </p>
 
                         <form action="#" className="flex gap-2 w-full mb-[40px] max-md-screen:flex-col">
@@ -152,18 +152,18 @@ const ElectionDetailsPage = () => {
                                 value={modalState.voter}
                                 onChange={(e) => setModalState({...modalState, voter: e.target.value})}
                                 type="text"
-                                placeholder="Добавить голосующего"
+                                placeholder="Add voter"
                                 className="w-full p-1 border-4 border-black outline-none"
                             />
 
-                            <button className="nes-btn p-0" onClick={(e) => addVoter(e, modalState.voter)}>
+                            <button className="p-0 nes-btn" onClick={(e) => addVoter(e, modalState.voter)}>
                                 Добавить
                             </button>
                         </form>
 
                         <div className="flex flex-col w-full items-center h-full max-h-[300px] min-h-[300px] overflow-y-auto">
                             {
-                                !election.voters.length ? <p className="opacity-60 text-center">Голосующих нет нет</p> :
+                                !election.voters.length ? <p className="text-center opacity-60">Голосующих нет нет</p> :
                                 election.voters.map(addr => <p>{addr.slice(0, 10)}...{addr.slice(36)}</p>)
                             }
                         </div>
@@ -171,7 +171,7 @@ const ElectionDetailsPage = () => {
 
                     <div className="w-[50%] flex flex-col items-center">
                         <p className="mb-[30px]">
-                            Кандидаты
+                            Candidates
                         </p>
 
                         <form action="#" className="flex gap-2 w-full mb-[40px] max-md-screen:flex-col">
@@ -179,18 +179,18 @@ const ElectionDetailsPage = () => {
                                 value={modalState.candidate}
                                 onChange={(e) => setModalState({...modalState, candidate: e.target.value})}
                                 type="text"
-                                placeholder="Добавить кандидата"
+                                placeholder="Add candidate"
                                 className="w-full p-1 border-4 border-black outline-none"
                             />
 
-                            <button className="nes-btn p-0" onClick={(e) => addCandidate(e, modalState.candidate)}>
-                                Добавить
+                            <button className="p-0 nes-btn" onClick={(e) => addCandidate(e, modalState.candidate)}>
+                                Add
                             </button>
                         </form>
 
                         <div className="flex flex-col gap-3 w-full items-center h-full max-h-[300px] min-h-[300px] overflow-y-auto">
                             {
-                                !election.candidates.length ? <p className="opacity-60 text-center">Кандидатов нет</p> :
+                                !election.candidates.length ? <p className="text-center opacity-60">Кандидатов нет</p> :
                                 election.candidates.map(candidate => <p>{candidate.name}</p>)
                             }
                         </div>

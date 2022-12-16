@@ -67,14 +67,14 @@ const CreateElectionPage = () => {
     };
 
     return (
-        <section className="w-full min-h-screen bg-orange-300">
-            <div className="w-full top-0 sticky z-10">
+        <section className="w-full min-h-screen bg-blue-300">
+            <div className="sticky top-0 z-10 w-full">
                 <Header />
             </div>
 
             <div className="w-full flex justify-center mb-[60px]">
-                <h2 className="text-white text-4xl text-center animate-slideright max-2sm-screen:text-2xl">
-                    Новое голосование
+                <h2 className="text-4xl text-center text-white animate-slideright max-2sm-screen:text-2xl">
+                    New vote
                 </h2>
             </div>
 
@@ -85,8 +85,8 @@ const CreateElectionPage = () => {
                             value={electionTitle}
                             onChange={(e) => setElectionTitle(e.target.value)}
                             type="text" 
-                            placeholder="Название..."
-                            className="w-full text-2xl max-2sm-screen:text-xl bg-transparent outline-none border-b-2 border-b-white placeholder:text-white placeholder:text-opacity-50"
+                            placeholder="Name..."
+                            className="w-full text-2xl bg-transparent border-b-2 outline-none max-2sm-screen:text-xl border-b-white placeholder:text-white placeholder:text-opacity-50"
                         />
 
                         <LettersCounter 
@@ -95,13 +95,13 @@ const CreateElectionPage = () => {
                         />
                     </div>
 
-                    <div className="flex gap-6 items-center">
+                    <div className="flex items-center gap-6">
                         <input 
                             value={candidateName}
                             onChange={(e) => setCandidateName(e.target.value)}
                             type="text" 
-                            placeholder="Имя кандидата..."
-                            className="w-full text-2xl max-2sm-screen:text-xl bg-transparent outline-none border-b-2 border-b-white placeholder:text-white placeholder:text-opacity-50"
+                            placeholder="The candidates name..."
+                            className="w-full text-2xl bg-transparent border-b-2 outline-none max-2sm-screen:text-xl border-b-white placeholder:text-white placeholder:text-opacity-50"
                         />
 
                         {/* <LettersCounter 
@@ -109,24 +109,24 @@ const CreateElectionPage = () => {
                             max={16}
                         /> */}
 
-                        <button className="nes-btn is-success py-1 px-2 text-xl max-3sm-screen:text-xs" onClick={addCandidate}>
+                        <button className="px-2 py-1 text-xl nes-btn is-success max-3sm-screen:text-xs" onClick={addCandidate}>
                             +
                         </button>
                     </div>
 
                     <div className="flex flex-col items-center max-h-[200px] overflow-y-auto gap-6 w-[50%]">
                         {
-                            !candidates.length ? <p>Пока нет кандидатов</p> :
-                            candidates.map((candidate) => <div className="text-xl border-4 p-2 border-white w-full flex justify-between items-center">{candidate.name} <button onClick={(e) => removeCandidatre(e, candidate.id)} className="nes-btn is-error p-0 text-xl max-3sm-screen:text-xs">x</button></div>)
+                            !candidates.length ? <p>No candidates yet</p> :
+                            candidates.map((candidate) => <div className="flex items-center justify-between w-full p-2 text-xl border-4 border-white">{candidate.name} <button onClick={(e) => removeCandidatre(e, candidate.id)} className="p-0 text-xl nes-btn is-error max-3sm-screen:text-xs">x</button></div>)
                         }
                     </div>
                     
 
                     <button 
-                        className="nes-btn p-1 max-3sm-screen:text-xs"
+                        className="p-1 nes-btn max-3sm-screen:text-xs"
                         onClick={(e) => deployElectionSmartContract(e, electionTitle)}
                     >
-                        Создать
+                        Create
                     </button>
                 </form>
             </div>

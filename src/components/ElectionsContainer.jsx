@@ -10,7 +10,7 @@ const ElectionsContainer = ({elections}) => {
     return (
         <div className="w-full px-[10px] flex flex-wrap justify-center gap-[60px] animate-slideup">
             {
-                state.isElectionsFetching ? <Loader /> : !elections.length ? <p>Голосований не найдено</p> : 
+                state.isElectionsFetching ? <Loader /> : !elections.length ? <p>Polls not found</p> : 
                 elections.map(election => <ElectionCard election={election} key={election.address}/>)
             }
         </div>
