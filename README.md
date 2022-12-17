@@ -1,6 +1,7 @@
 # React Voting dApp
 
 ### Try it right now: https://khrapunov967.github.io/react-voting-dapp/
+![alt text](https://iili.io/Hx9Wa87.png)
 
 ## Available Scripts
 
